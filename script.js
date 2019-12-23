@@ -71,12 +71,19 @@ function saveData() {
 
 function showAll() {
     var stringAll = window.localStorage.getItem("day_schedule");
+    if (stringAll === null) {
+        return;
+    }
+
     var objectAll = JSON.parse(stringAll);
     for (var i = 9; i < 17; i++) {
 
         $("textarea").each(function () {
             if ($(this).attr("set_text") === "hour" + i) {
-                $(this).val(objectAll[moment().format("MMDDYYYY") + "hour" + i]);
+                key = moment().format("MMDDYYYY") + "hour" + i;
+                if (key in objectAll) {
+                    $(this).val(objectAll[key]);
+                }
             }
         })
     }
