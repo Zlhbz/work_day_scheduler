@@ -76,7 +76,6 @@ function showAll() {
 
         $("textarea").each(function () {
             if ($(this).attr("set_text") === "hour" + i) {
-                console.log(objectAll[moment().format("MMDDYYYY") + "hour" + i])
                 $(this).val(objectAll[moment().format("MMDDYYYY") + "hour" + i]);
             }
         })
